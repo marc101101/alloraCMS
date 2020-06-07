@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
 
   logout() {
     console.log("logout");
-
   }
 
   getRowNumber(element) {
@@ -46,6 +45,7 @@ export class AppComponent implements OnInit {
   }
 
   publish() {
+    this.data.last_update = Date.now();
     this.dataService.postData(this.data).subscribe((result) => {
       alert(result.message);
     },
