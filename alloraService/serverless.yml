@@ -11,11 +11,45 @@ plugins:
 provider:
   name: aws
   runtime: nodejs10.x
+  region: eu-central-1
+
+  environment:
+    JSON_BUCKET: dev.spendenlike.de/static
+    JSON_FILE: cms.json
+  
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - cloudwatch:*
+        - logs:*
+        - "s3:ListBucket"
+        - "s3:PutObject"
+        - "ssm:GetParameters"
+      Resource:
+        - "*"
+
+package:
+  individually: false
+  excludeDevDependencies: true
+
+custom:
+  webpack:
+    webpackConfig: "webpack.config.js" # Name of webpack configuration file
+    packager: "npm" # Packager that will be used to package your external modules
 
 functions:
-  hello:
-    handler: handler.hello
+  getInfo:
+    handler: handler.getInfo
     events:
       - http:
           method: get
-          path: hello
+          path: info
+          cors: true
+
+  postInfo:
+    handler: handler.postInfo
+    events:
+      - http:
+          method: post
+          path: info
+          cors: true

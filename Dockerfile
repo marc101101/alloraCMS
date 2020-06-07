@@ -12,5 +12,8 @@ RUN pip install awscli
 RUN apk --purge -v del py-pip
 RUN rm /var/cache/apk/*
 
- # start zsh
+# install serverless
+RUN npm install -g serverless
+
+# start zsh
 CMD [ "zsh" ]
