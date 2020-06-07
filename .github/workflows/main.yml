@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-      - run: pwd
+      - run: cd /home/runner/work/alloraCMS/alloraApp
       - run: npm install
       - run: npm run-script build
       - uses: jakejarvis/s3-sync-action@master
