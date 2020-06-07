@@ -17,10 +17,12 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }
-      - run: npm install
+          node-version: ${{ matrix.node }}
+      - name: Install Dependencies
+        run: npm install
         working-directory: alloraApp
-      - run: npm run-script build
+      - name: Build sources
+        run: npm run-script build
         working-directory: alloraApp
       - uses: jakejarvis/s3-sync-action@master
         with:
