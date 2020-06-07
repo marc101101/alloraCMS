@@ -17,10 +17,11 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }}
-      - run: cd /home/runner/work/alloraCMS/alloraApp
+          node-version: ${{ matrix.node }
       - run: npm install
+        working-directory: alloraApp
       - run: npm run-script build
+        working-directory: alloraApp
       - uses: jakejarvis/s3-sync-action@master
         with:
          args: --acl public-read --follow-symlinks --delete
