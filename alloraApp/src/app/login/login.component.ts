@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
     title = 'alloraApp';
-    private mail: string;
-    private password: string;
+    public mail: string;
+    public password: string;
 
     constructor(public authService: AuthService, public router: Router) { }
 
