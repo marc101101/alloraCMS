@@ -10,11 +10,12 @@ export class DataService {
     dataUrl = 'https://x6ce6j7dq6.execute-api.eu-central-1.amazonaws.com/dev/info';
 
     getData(): Observable<any> {
-        return this.http.get(this.dataUrl);
+
+        return this.http.get(this.dataUrl, { headers: { 'x-api-key': localStorage.getItem("token") } });
     }
 
     postData(body): Observable<any> {
-        return this.http.post(this.dataUrl, body);
+        return this.http.post(this.dataUrl, body, { headers: { 'x-api-key': localStorage.getItem("token") } });
     }
 
 }

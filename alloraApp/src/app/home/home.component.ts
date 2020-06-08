@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/dataService';
 import { InfoObject } from '../models/module';
+import { AuthService } from '../services/auth.service';
 
 @Component({
     selector: 'app-root',
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
     data: InfoObject;
     objectKeys = [];
 
-    constructor(public dataService: DataService) {
+    constructor(public dataService: DataService, public authService: AuthService) {
 
     }
 
@@ -23,7 +24,8 @@ export class HomeComponent implements OnInit {
     }
 
     logout() {
-        console.log("logout");
+        this.authService.logout();
+        this.authService.navToLogin();
     }
 
     getRowNumber(element) {

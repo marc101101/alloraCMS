@@ -17,7 +17,6 @@ export class AuthService {
 
     public authStatus: boolean = false;
     private url: string = "https://x6ce6j7dq6.execute-api.eu-central-1.amazonaws.com/dev";
-    private jwtHelper: JwtHelperService = new JwtHelperService();
 
     constructor(public http: HttpClient, public router: Router) { }
 
@@ -27,7 +26,7 @@ export class AuthService {
      * Uses by Auth Guard to check routing policies.
      */
     isLoggedIn(): Observable<boolean> {
-        if (this.jwtHelper.isTokenExpired(localStorage.getItem('token'))) {
+        if (!localStorage.getItem('token')) {
             this.navToLogin();
             this.authStatus = false;
         }
@@ -57,7 +56,7 @@ export class AuthService {
      * Requests / Checks login data and receives in good case a JWT Token from backend.
      */
     login(user: UserData): Observable<any> {
-        return this.http.post(this.url + "/auth", { email: user.mail, password: user.password }).pipe(
+        return this.http.post(this.url + "/auth", { mail: user.mail, password: user.password }).pipe(
             map((res: Response) => {
                 this.authStatus = true;
                 return res;
