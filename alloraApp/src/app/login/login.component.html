@@ -1,0 +1,21 @@
+<div class="login-container">
+    <div class="text-center" style="width: 100%;">
+        <div class="form-signin">
+            <img class="mb-4" src="../../assets/logo_dark.png" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <label for="inputEmail" class="sr-only">Email address</label>
+
+            <input type="email" [(ngModel)]="mail" id="inputEmail" class="form-control" placeholder="Email address"
+                required autofocus>
+
+            <label for="inputPassword" class="sr-only">Password</label>
+
+            <input type="password" [(ngModel)]="password" id="inputPassword" class="form-control" placeholder="Password"
+                required>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="signIn()">Sign in</button>
+
+            <p class="mt-5 mb-3 text-muted">&copy; Spendenlike e.V. 2020</p>
+        </div>
+    </div>
+</div>
