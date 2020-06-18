@@ -49,7 +49,6 @@ functions:
           method: get
           path: info
           cors: true
-          private: true
 
   postInfo:
     handler: handler.postInfo

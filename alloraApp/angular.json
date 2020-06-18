@@ -121,5 +121,8 @@
       }
     }
   },
-  "defaultProject": "alloraApp"
+  "defaultProject": "alloraApp",
+  "cli": {
+    "analytics": false
+  }
 }

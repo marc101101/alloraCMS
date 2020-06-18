@@ -7,3 +7,4 @@ jspm_packages
 
 # Webpack directories
 .webpack
+alloraApp/src/assets/cms.json
