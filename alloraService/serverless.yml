@@ -14,13 +14,13 @@ provider:
   region: eu-central-1
 
   apiKeys:
-    - name: spendenlike-allora
+    - name: spendenlike-allora-key
       value: ${ssm:/alloraCMS/spendenlike/API_KEY}
 
   environment:
     JSON_BUCKET: dev.spendenlike.de/static
     JSON_FILE: cms.json
-  
+
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -49,6 +49,7 @@ functions:
           method: get
           path: info
           cors: true
+          private: false
 
   postInfo:
     handler: handler.postInfo
@@ -58,7 +59,7 @@ functions:
           path: info
           cors: true
           private: true
-  
+
   auth:
     handler: handler.auth
     events:
